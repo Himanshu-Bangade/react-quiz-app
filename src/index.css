@@ -1,0 +1,289 @@
+:root{
+  --bg: #0f1724;          /* deep navy */
+  --card: #0b1220;
+  --muted: #98a0b3;
+  --accent: #6ee7b7;      /* mint */
+  --accent-2: #60a5fa;    /* blue */
+  --glass: rgba(255,255,255,0.04);
+  --card-radius: 14px;
+  --max-width: 1100px;
+  --shadow: 0 6px 20px rgba(2,6,23,0.6);
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #071026 0%, #081226 100%);
+  color: #e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding: 20px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+/* App container */
+.app {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 20px;
+}
+
+/* Header */
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo {
+  width:56px;
+  height:56px;
+  border-radius:12px;
+  background: linear-gradient(135deg,var(--accent), var(--accent-2));
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:700;
+  font-family: "Roboto Slab", serif;
+  color:#07203b;
+  box-shadow: 0 6px 18px rgba(96,165,250,0.12);
+  transform: rotate(-6deg);
+}
+.title {
+  font-family: "Roboto Slab", serif;
+  font-size:20px;
+  letter-spacing:0.2px;
+}
+
+/* Home grid */
+.grid {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:20px;
+  align-items:stretch;
+}
+
+/* Category card */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.02));
+  border-radius: var(--card-radius);
+  padding:18px;
+  box-shadow: var(--shadow);
+  transition: transform 0.28s cubic-bezier(.2,.9,.2,1), box-shadow 0.28s;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.card:hover{
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.7);
+}
+.card .cat-title {
+  font-weight:600;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.card .cat-desc {
+  color:var(--muted);
+  font-size:13px;
+  flex:1;
+}
+.card .start-btn {
+  align-self:flex-start;
+  margin-top:8px;
+  background: linear-gradient(90deg,var(--accent), var(--accent-2));
+  color:#07203b;
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+  transform-origin:center;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.card .start-btn:hover{
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+/* subtle icon */
+.cat-icon{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,0.03);
+  font-weight:700;
+  font-size:18px;
+}
+
+/* responsive adjustments */
+@media (max-width: 1000px){
+  .grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 640px){
+  body{padding:12px}
+  .grid { grid-template-columns: 1fr; gap:14px; }
+  .logo{width:48px;height:48px}
+  .title{font-size:18px}
+}
+
+/* Quiz area */
+.quiz {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:18px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  min-height: 420px;
+}
+.quiz .meta {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+.meta .info { color:var(--muted) }
+.question {
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:14px;
+  font-family: "Roboto Slab", serif;
+}
+.options {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.option-btn {
+  background: var(--glass);
+  border-radius:10px;
+  padding:12px 14px;
+  border: 1px solid rgba(255,255,255,0.03);
+  text-align:left;
+  cursor:pointer;
+  transition: transform 0.12s, background 0.12s, border-color 0.12s;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.option-btn:hover{ transform: translateY(-4px) scale(1.01); }
+.option-btn.selected{
+  background: linear-gradient(90deg, rgba(102, 251, 206, 0.12), rgba(96,165,250,0.08));
+  border-color: rgba(110,231,183,0.18);
+  box-shadow: 0 8px 24px rgba(96,165,250,0.06);
+}
+.option-letter{
+  min-width:36px;
+  min-height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  font-weight:700;
+  background: rgba(255,255,255,0.02);
+}
+
+/* Next button area */
+.controls {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:16px;
+}
+.btn {
+  padding:10px 16px;
+  border-radius:10px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+  background: rgba(255,255,255,0.04);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.btn.primary {
+  background: linear-gradient(90deg,var(--accent), var(--accent-2));
+  color:#07203b;
+}
+.btn:hover{ transform: translateY(-4px) }
+
+.progress-bar {
+  height:10px;
+  background: rgba(255,255,255,0.03);
+  border-radius:999px;
+  overflow:hidden;
+  width:60%;
+}
+.progress {
+  height:100%;
+  width:100%;
+  transform-origin:left;
+  background: linear-gradient(90deg,var(--accent), var(--accent-2));
+  transition: width 0.3s linear;
+}
+
+/* timer & circular */
+.timer {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:700;
+}
+.timer .time {
+  min-width:58px;
+  text-align:center;
+  background: rgba(255,255,255,0.02);
+  padding:8px 10px;
+  border-radius:10px;
+}
+
+/* result */
+.result {
+  text-align:center;
+  padding:30px 10px;
+}
+.score {
+  font-size:48px;
+  font-weight:800;
+  margin:14px 0;
+  font-family: "Roboto Slab", serif;
+}
+.result .summary {
+  color:var(--muted);
+}
+
+/* small animations */
+.fade-in {
+  animation: fadeIn .45s ease both;
+}
+@keyframes fadeIn {
+  from{opacity:0; transform: translateY(8px)}
+  to{opacity:1; transform:none}
+}
+
+/* lightly style links/buttons on top right header */
+.header-actions {
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+/* small footer note for mobile */
+.footer-note{ color:var(--muted); font-size:13px; margin-top:18px; text-align:center }
+
+/* accessibility focus */
+button:focus, .option-btn:focus { outline: 3px solid rgba(96,165,250,0.14); outline-offset:2px }
